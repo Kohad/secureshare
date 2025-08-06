@@ -1,0 +1,11 @@
+<h1><%= @file_upload.title %></h1>
+<p><%= @file_upload.description %></p>
+
+<% if @file_upload.file.attached? %>
+  <p><%= link_to "Download", rails_blob_path(@file_upload.file, disposition: "attachment") %></p>
+<% end %>
+<% if @file_upload.public? %>
+  <p>Public URL: <%= public_file_url(@file_upload.slug) %></p>
+<% end %>
+<%= link_to "Back to My Files", file_uploads_path %>
+<%= link_to "Back to Dashboard", authenticated_root_path %>
